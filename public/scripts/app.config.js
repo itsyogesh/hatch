@@ -11,7 +11,8 @@ hatch.config(function($urlRouterProvider, $stateProvider){
 
 	$stateProvider.state('register', {
 		url: '/register',
-		templateUrl: '/views/register.html'
+		templateUrl: '/views/register.html',
+		controller: 'registerController'
 	});
 
 });
