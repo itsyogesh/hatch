@@ -5,9 +5,21 @@
 				<a class="navbar-brand" href="/">Hatch</a>
 			</div>
 			<ul class="nav navbar-nav navbar-right">
-				<li ui-sref-active="active"><a ui-sref="main">Home</a></li>
+				<li ui-sref-active="active">
+					<a ui-sref="main">Home</a>
+				</li>
 				
-				<li ng-if="!isAuthenticated" ui-sref-active="active"><a ui-sref="register">Register</a></li>
+				<li ui-sref-active="active">
+					<a ui-sref="jobs">Jobs</a>
+				</li>
+
+				<li ng-hide="isAuthenticated()" ui-sref-active="active">
+					<a ui-sref="login">Login</a>
+				</li>
+				<li ng-show="isAuthenticated()" ui-sref-active="active">
+					<a ui-sref="logout">Logout</a>
+				</li>
+				<li
 			</ul>
 		</div>
 	</div>

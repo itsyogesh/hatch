@@ -6,6 +6,7 @@ var logger = require('morgan');
 var bodyParser = require('body-parser');
 
 var userRouter = require('./routes/userRoute');
+var jobsRouter = require('./routes/jobsRoute');
 
 mongoose.connect('mongodb://localhost:27017/hatch');
 console.log('connected to morgan');
@@ -25,7 +26,9 @@ app.use(function(req, res, next){
 });
 
 //user routes
-app.use('/', userRouter);
+app.use('/', userRouter, jobsRouter);
+
+//jobs route
 
 var port = process.env.PORT || 3000;
 

@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title></title>
+	<title>Hatch</title>
 	<meta name="viewport" content="width=device-width">
 
 	<!-- Styles -->
@@ -16,12 +16,7 @@
 	<div ng-include="'views/header.html'"></div>
 	<div class="container" ng-cloak>
 		<div ui-view></div>
-		<div class="alert alert-dismissible alert-{{ alert.type }} animated" 
-		ng-class="{'fadeInLeft': alert.show, 'fadeInLeft': !alert.show, 'alert-hidden': !alert.hasBeenShown}">
-  			<button type="button" class="close" data-dismiss="alert">×</button>
-  			<h4>{{ alert.title }}</h4>
-  			<p>{{ alert.message }}</p>
-		</div>
+	<div ng-include="views/alert.html"></div>
 	</div>
 
 	<!-- build scripts -->
@@ -31,17 +26,22 @@
 	<script src="components/bootstrap/dist/js/bootstrap.js"></script>
 
 	<script src="scripts/app.js"></script>
+	<script src="scripts/services/authInterceptor.js"></script>
 	<script src="scripts/app.config.js"></script>
 
-	<!-- controllers -->
-	<script src="scripts/controllers/main.js"></script>
-	<script src="scripts/controllers/register.js"></script>
-	<script src="scripts/controllers/header.js"></script>
-	
 	<!-- services -->
 	<script src="scripts/services/alert.js"></script>
 	<script src="scripts/services/authToken.js"></script>
 
+
+	<!-- controllers -->
+	<script src="scripts/controllers/main.js"></script>
+	<script src="scripts/controllers/register.js"></script>
+	<script src="scripts/controllers/login.js"></script>
+	<script src="scripts/controllers/header.js"></script>
+	<script src="scripts/controllers/jobs.js"></script>
+	<script src="scripts/controllers/logout.js"></script>
+	
 	<!-- derivatives -->
 	<script src="scripts/directives/confirmPassword.js"></script>
 </body>

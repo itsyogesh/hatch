@@ -1,10 +1,10 @@
 'use strict';
 
-hatch.controller('registerController', ['$scope', '$http', 'alert', 'authToken',
-	function($scope, $http, alert, authToken){
+hatch.controller('registerController', ['$scope', '$http', 'alert', 'authToken', 'API_URL',
+	function($scope, $http, alert, authToken, API_URL){
 	
 	$scope.submit = function(){
-		var url = 'http://localhost:3000/register';
+		var url = API_URL + 'register';
 		
 		var user = {
 			email : $scope.email,
@@ -13,7 +13,7 @@ hatch.controller('registerController', ['$scope', '$http', 'alert', 'authToken',
 
 		$http.post(url, user)
 			.success(function(res){
-				alert('success', 'OK!', 'You are now registered');
+				alert('success', 'OK!', 'Account Created! Thank you for registering ' + user.email + '!');
 				authToken.setToken(res.token);
 			})
 			.error(function(err){
