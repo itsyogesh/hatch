@@ -4,6 +4,7 @@ var app = require('express')();
 var mongoose = require('mongoose');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
+var passport = require('passport');
 
 var userRouter = require('./routes/userRoute');
 var jobsRouter = require('./routes/jobsRoute');
@@ -13,6 +14,13 @@ console.log('connected to morgan');
 
 //Using logger
 app.use(logger('dev'));
+
+//Using passport
+app.use(passport.initialize());
+
+passport.serializeUser(function(user, callback){
+	callback(null, user.id);
+});
 
 //Using boddy parser
 app.use(bodyParser.json());

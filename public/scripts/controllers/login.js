@@ -1,23 +1,26 @@
 'use strict';
 
-hatch.controller('loginController', ['$scope', '$http', 'authToken', 'alert', 'API_URL', 
-	function($scope, $http, authToken, alert, API_URL){
+hatch.controller('loginController', ['$scope', 'auth', 'alert', 
+	function($scope, auth, alert){
 
 	$scope.submit = function(){
-		var url = API_URL + 'login';
 		
 		var user = {
-			email : $scope.email,
+			email: $scope.email,
 			password: $scope.password
 		};
 
-		$http.post(url, user)
+		auth.login(user)
 			.success(function(res){
-				alert('success', 'Welcome', 'Thanks for coming back ' + user.email + '!'); 
-				authToken.setToken(res.token);
+				alert('success', 'Welcome', 'Thanks for coming back ' + user.email + '!');
+
 			})
 			.error(function(err){
 				alert('warning', 'Something went wrong :(', err.message);
 			});
+	}
+
+	$scope.google = function(){
+		auth.googleAuth().then();
 	}
 }]);
